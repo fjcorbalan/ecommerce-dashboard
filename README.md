@@ -1,5 +1,7 @@
 ecommerce-dashboard/
 
+datos: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
 Construido con:
 
 - Python
