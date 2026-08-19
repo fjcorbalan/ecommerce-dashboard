@@ -15,7 +15,8 @@ FILES = {
     "order_items": "data/olist_order_items_dataset.csv",
     "order_payments": "data/olist_order_payments_dataset.csv",
     "orders": "data/olist_orders_dataset.csv",
-    "products": "data/olist_products_dataset.csv"
+    "products": "data/olist_products_dataset.csv",
+    "products_english_name": "data/product_category_name_translation.csv"
 }
 
 
