@@ -9,4 +9,4 @@ query = query_path.read_text(encoding="utf-8")
 
 df = run_query(query)
 
-df.head()
+print(df.head())

@@ -6,7 +6,7 @@ import sqlite3
 import pandas as pd
 
 
-DB_PATH = "data/ab_testing.db" #donde tenemos nuestra base de datos creada desde load_csv_to_sqlite a partir del csv
+DB_PATH = "data/ecommerce.db" #donde tenemos nuestra base de datos creada desde load_csv_to_sqlite a partir del csv
 
 
 def get_connection():

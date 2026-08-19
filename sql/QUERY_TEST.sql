@@ -1,2 +1,2 @@
-SELECT * FROM ecommerce.orders
+SELECT * FROM orders
 limit 10
