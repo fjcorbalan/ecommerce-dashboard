@@ -1,42 +1,55 @@
 import sqlite3
 import pandas as pd
 
-# ----------------------------
-# Configuración
-# ----------------------------
 
-CSV_PATH = "data/ab_testing_teaching_dataset_chatgpt.csv"
-DB_PATH = "data/ab_testing.db"
+# --------------------------------
+# Configuration
+# --------------------------------
 
-TABLE_NAME = "experiment"
+DB_PATH = "data/ecommerce.db"
 
-# ----------------------------
-# Load CSV
-# ----------------------------
 
-df = pd.read_csv(CSV_PATH)
+FILES = {
+    "customers": "data/olist_customers_dataset.csv",
+    "geolocation": "data/olist_geolocation_dataset.csv",
+    "order_items": "data/olist_order_items_dataset.csv",
+    "order_payments": "data/olist_order_payments_dataset.csv",
+    "orders": "data/olist_orders_dataset.csv",
+    "products": "data/olist_products_dataset.csv"
+}
 
-print("CSV loaded successfully.")
-print(df.head())
 
-# ----------------------------
+# --------------------------------
 # Create SQLite database
-# ----------------------------
+# --------------------------------
 
 conn = sqlite3.connect(DB_PATH)
 
-# ----------------------------
-# Write dataframe into SQLite
-# ----------------------------
 
-df.to_sql(
-    TABLE_NAME,
-    conn,
-    if_exists="replace",
-    index=False
-)
+# --------------------------------
+# Load CSV files into SQLite
+# --------------------------------
+
+for table_name, csv_path in FILES.items():
+
+    print(f"Loading {table_name}...")
+
+    df = pd.read_csv(csv_path)
+
+    df.to_sql(
+        table_name,
+        conn,
+        if_exists="replace",
+        index=False
+    )
+
+    print(f"{table_name}: {len(df):,} rows loaded.")
+
+
+# --------------------------------
+# Close connection
+# --------------------------------
 
 conn.close()
 
-print(f"Database created successfully!")
-print(f"Table '{TABLE_NAME}' contains {len(df)} rows.")
+print("\nSQLite warehouse created successfully.")

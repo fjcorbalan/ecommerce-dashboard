@@ -1,4 +1,4 @@
-ab-testing-dashboard/
+ecommerce-dashboard/
 
 Construido con:
 
@@ -41,3 +41,22 @@ Flujo:
                      ▲
                      │
                  CSV Dataset
+
+
+Mapa de schema:
+
+customers
+    │
+    │ customer_id
+    ▼
+orders
+    │
+    ├───────────────► order_items ◄──────────── products
+    │                      │                         │
+    │                      │                         │
+    │                      ▼                         ▼
+    │                   sellers              category_translation
+    │
+    ├───────────────► order_payments
+    │
+    └───────────────► order_reviews
