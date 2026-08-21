@@ -14,11 +14,15 @@ def get_connection():
     return sqlite3.connect(DB_PATH)
 
 
-def run_query(sql_query):
+def run_query(sql_query, params=None):
 
     conn = get_connection()
 
-    df = pd.read_sql_query(sql_query, conn) #sql_query será una consulta SQL hecha manualmente con códico, o una referencia a una consulta SQL en la carpeta sql
+    df = pd.read_sql_query(
+        sql_query, #sql_query será una consulta SQL hecha manualmente con códico, o una referencia a una consulta SQL en la carpeta sql
+        conn,
+        params=params #para aceptar parámetros de SQL, que nos permitirán utilizar los filtros (Año, mes, ciudad, producto) y el selector de KPIs, en las visualizaciones
+    )
 
     conn.close()
 
